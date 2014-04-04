@@ -37,14 +37,13 @@ int main()
 
     if (ordenada)
     {
-        cout << "A lista esta ordenada " << endl;
-
+        cout << endl << "A lista esta ordenada " << endl;
         if (iAsc == 1)
-            cout << "Ascendente" << endl;
+            cout << "Ascendente" << endl << endl;
 
 
         if (iDes == 1)
-            cout << "Descendente" << endl;
+            cout << "Descendente" << endl << endl;
     }
     else
         cout << "A lista não esta ordenada " << endl;
@@ -92,7 +91,6 @@ void imprimeLista(int vet[])
 bool estaOrdenada(int vet[], int &asc, int &des)
 {
     int ultimo, maior, menor;
-    //int anterior = 0;
 
     bool ordenada = true;
 
@@ -101,14 +99,12 @@ bool estaOrdenada(int vet[], int &asc, int &des)
         if (i == 0)
         {
            ultimo = vet[i];
-           //anterior = ultimo;
            maior = ultimo;
            menor = ultimo;
         }
 
         if ((vet[i] >= ultimo) && (vet[i] >= maior))
         {
-            //anterior = ultimo;
             ultimo = vet[i];
             maior = ultimo;
             asc = 1;
@@ -116,7 +112,6 @@ bool estaOrdenada(int vet[], int &asc, int &des)
         }
         else if ((vet[i] <= ultimo) && (vet[i] <= menor))
         {
-            //anterior = ultimo;
             ultimo = vet[i];
             menor = ultimo;
             asc = 0;
