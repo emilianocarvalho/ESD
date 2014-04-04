@@ -1,16 +1,17 @@
 #include <cstdlib>
 #include <iostream>
 
-#include <Exercicio.h>
+#include <ESDHeader.hpp>
 
 using namespace std;
 
+// #define TAMANHOMAXIMO 5
 
-const int tamanhoMaximo = 5;
+const int TAMANHOMAXIMO = 5;
 
 int main()
 {
-    int lista[tamanhoMaximo];
+    int lista[TAMANHOMAXIMO];
     int tamanhoAtual = 0;
     int continuarInserindo = 0;
     int valor_digitado = 0;
@@ -22,7 +23,7 @@ int main()
     while(true)
     {
         cin >> valor_digitado;
-        continuarInserindo = buscarElementoRepetido(lista, tamanhoAtual, valor_digitado, tamanhoMaximo);
+        continuarInserindo = buscarElementoRepetido(lista, tamanhoAtual, valor_digitado, TAMANHOMAXIMO);
 
         if (continuarInserindo == 0)
            inserirSemRepetir(lista, valor_digitado, tamanhoAtual);
@@ -48,80 +49,20 @@ int main()
         cout << "A lista não esta ordenada " << endl;
 
 
+    cout << endl << "Remover da Lista" << endl;
+    cout << "Digite" << endl;
+    cout << "0 - Para remover inteiros pares" << endl;
+    cout << "1 - Para remover inteiros impares" << endl;
+
+    int Opcao;
+
+    cin >> Opcao;
+
+    removerDaLista(lista, Opcao);
+
+    cout << endl << "Lista Atualizada" << endl;
+    imprimeLista(lista);
+
     //system("PAUSE");
     return EXIT_SUCCESS;
-}
-
-void inserirSemRepetir(int vet[], int valor, int &pos)
-{
-    vet[pos] = valor;
-    pos++;
-}
-
-int buscarElementoRepetido(int vet[], int &pos, int valor, int lim)
-{
-    /// caso seja atingido o limite
-    if (lim == pos)
-    {
-            cout << "Capacidade máxima do lista atingida" << endl;
-            cout << "O valor " << valor << " não foi considerado" << endl << endl;
-            return -1;
-    }
-
-    /// verifica se o elemento já foi digitado
-    for (int i = 0; i < pos; i++)
-    {
-        if (vet[i] == valor)
-        {
-            cout << "Valor já digitado:" << endl;
-            cout << "vet[" << i <<"] = " << vet[i] << endl << endl;
-            return 1;
-        }
-    }
-    return 0;
-}
-
-void imprimeLista(int vet[])
-{
-    for (int i=0; i < tamanhoMaximo; i++)
-        cout << "lista[" << i << "] = " << vet[i] << endl;
-}
-
-bool estaOrdenada(int vet[], int &asc, int &des)
-{
-    int ultimo, maior, menor;
-
-    bool ordenada = true;
-
-    for (int i = 0; i < tamanhoMaximo; ++i)
-    {
-        if (i == 0)
-        {
-           ultimo = vet[i];
-           maior = ultimo;
-           menor = ultimo;
-        }
-
-        if ((vet[i] >= ultimo) && (vet[i] >= maior))
-        {
-            ultimo = vet[i];
-            maior = ultimo;
-            asc = 1;
-            des = 0;
-        }
-        else if ((vet[i] <= ultimo) && (vet[i] <= menor))
-        {
-            ultimo = vet[i];
-            menor = ultimo;
-            asc = 0;
-            des = 1;
-        }
-        else
-        {
-            ordenada = false;
-            break;
-        }
-
-    }
-    return ordenada;
 }
