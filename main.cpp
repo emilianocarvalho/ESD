@@ -1,7 +1,6 @@
 #include <cstdlib>
-#include <stdio.h>
 #include <iostream>
-#include <string>
+
 #include <Exercicio.h>
 
 using namespace std;
