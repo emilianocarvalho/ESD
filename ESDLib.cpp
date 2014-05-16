@@ -86,7 +86,25 @@ bool estaOrdenada(int vet[], int &asc, int &des)
     return ordenada;
 }
 
-/* imprime na tela a lista */
+/* retorna o indice do vetor onde se encontra o valor */
+int buscarSequencial(int vet[], int valor)
+{
+    int encontrado = 0;
+
+    for (int i = 0; i < tamanhoMaximo; ++i)
+    {
+        if (vet[i] == valor)
+            encontrado = i;
+
+    }
+
+    if (encontrado == 0)
+        encontrado = -1;
+
+    return encontrado;
+}
+
+/* remove os elementos da lista */
 void removerDaLista(int vet[], int ParImpar)
 {
     int vetorTemporario[tamanhoMaximo];
@@ -128,3 +146,45 @@ void removerDaLista(int vet[], int ParImpar)
     }
 
 }
+/*
+void removerDaLista2(int vet[], int ParImpar)
+{
+
+
+    for (int i = 0; i < tamanhoMaximo; ++i)
+    {
+        if (ParImpar == 1) // remove impar
+        {
+            if ((vet[i] % 2) == 0)
+            {
+                int i = buscarSequencial(vet, );
+
+                vetorTemporario[j] = vet[i];
+                ++j;
+
+            }
+        }
+        else if (ParImpar == 0) // remove par
+        {
+            if ((vet[i] % 2) != 0)
+            {
+
+                vetorTemporario[j] = vet[i];
+                ++j;
+
+            }
+        }
+    }
+
+    //int vetorAtualizado[j+1];
+
+    for (int i = 0; i < tamanhoMaximo; ++i)
+    {
+        if (i < j)
+            vet[i] = vetorTemporario[i];
+        else
+            vet[i] = 0;
+    }
+
+}
+*/
